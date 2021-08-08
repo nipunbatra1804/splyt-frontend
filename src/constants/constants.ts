@@ -12,6 +12,16 @@ export const officeLocations: OfficeLocation[] = [
         name: "Singapore",
         position:   {latitude: 1.285194, longitude: 103.8522982}
     }, 
+    {
+        id: "kualaLumpur",
+        name: "Kuala Lumpur",
+        position:   {latitude: 3.120659, longitude: 101.6746269}
+    },
+    {
+        id: "tokyo",
+        name: "Tokyo",
+        position:   {latitude: 35.6582729, longitude: 139.753554}
+    }
 ];
 
 export const defaultNumberOfTaxis = 25;

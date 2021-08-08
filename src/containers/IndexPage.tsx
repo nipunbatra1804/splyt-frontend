@@ -11,6 +11,7 @@ import { usePosition } from "src/hooks/usePosition";
 import { getClosestOrDefaultOffice } from "src/utils/utils";
 import { Marker, Popup } from "react-leaflet";
 import { officeLocations, defaultNumberOfTaxis } from "src/constants/constants";
+import ButtonGroup from "src/components/ButtonGroup";
 
 
 const Styles = styled.div`
@@ -19,12 +20,15 @@ const Styles = styled.div`
     justify-content: center;
   }
   .wrapper {
-    margin-top: 20vh;
+    margin-top: 10vh;
     width: 50%;
   }
 `;
 
 const defaultPosition = getClosestOrDefaultOffice(null).position;
+const officeButtonArray = officeLocations.map(elem => { 
+    return {id: elem.id, text: elem.name};
+});
 
 function IndexPage(): JSX.Element {
     const [numberOfTaxis, setNumberOfTaxis] = useState(defaultNumberOfTaxis);
@@ -36,9 +40,13 @@ function IndexPage(): JSX.Element {
         setNumberOfTaxis(value);
     };
 
+    const handleOfficeSelection = (officeId: string) => {
+        const office = officeLocations.find(elem => elem.id === officeId);
+        if(office) setCenter(office?.position);
+    };
+
     const getDriversFromBFF = async (numberOfTaxis: number, position: Position) => {
         const drivers = await getDrivers(position,numberOfTaxis); 
-        console.log(drivers);
         setDrivers(drivers);
     };
 
@@ -86,9 +94,9 @@ function IndexPage(): JSX.Element {
             </Map>
             <div className="App">
                 <div className="wrapper">
+                    <ButtonGroup values={officeButtonArray} handleClick={handleOfficeSelection}/>
                     <Slider color="#0074D9" handleChange={handleSliderChanges} defaultValue={defaultNumberOfTaxis} />
                 </div>
-
             </div>
         </Styles>
     );

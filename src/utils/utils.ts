@@ -52,11 +52,16 @@ function distance(lat1:number, lon1:number, lat2:number, lon2:number, unit="K"):
 }
 
 const getClosestOffice = (position:Position) : OfficeLocation =>  {
-    const minDist = Number.MAX_VALUE;
+    let minDist = Number.MAX_VALUE;
     let closestOffice:OfficeLocation = officeLocations[0];
     officeLocations.forEach((element: OfficeLocation) => {
-        if(distance(position.latitude, position.longitude, element.position.latitude, element.position.latitude) < minDist) {
+        const distanceToPos = distance(position.latitude, position.longitude, element.position.latitude, element.position.longitude);
+        console.log(distanceToPos, element.id);
+        if(distanceToPos < minDist) {
             closestOffice = element;
+            minDist = distanceToPos;
+            console.log(closestOffice);
+            console.log(position);
         }
     });
     return closestOffice;
