@@ -1,6 +1,6 @@
-import React, { Children, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import { MapContainer, TileLayer } from "react-leaflet";
 import { Position } from "src/types/types";
 import { Map as LeafletMap } from "leaflet";
 

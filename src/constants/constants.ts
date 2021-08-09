@@ -25,3 +25,8 @@ export const officeLocations: OfficeLocation[] = [
 ];
 
 export const defaultNumberOfTaxis = 25;
+
+export const officeButtonArray = officeLocations.map(elem => { 
+    return {id: elem.id, text: elem.name};
+});
+officeButtonArray.push({id: "goToNearest", text: "Go To Nearest"});
