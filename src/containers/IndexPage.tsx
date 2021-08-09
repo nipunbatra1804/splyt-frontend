@@ -1,10 +1,10 @@
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import Map from "src/components/Map";
 import Slider from "src/components/Slider";
 import DriverMarker from "src/components/DriverMarker";
 import styled from "styled-components";
-import {getDrivers} from "src/api/api";
+// import {getDrivers} from "src/api/api";
 import { Driver, OfficeLocation, Position } from "src/types/types";
 import Header from "src/components/Header";
 import { usePosition } from "src/hooks/usePosition";
@@ -12,6 +12,8 @@ import { getClosestOrDefaultOffice } from "src/utils/utils";
 import { Marker, Popup } from "react-leaflet";
 import { officeLocations, defaultNumberOfTaxis } from "src/constants/constants";
 import ButtonGroup from "src/components/ButtonGroup";
+import { fetchDrivers } from "src/store/reducer";
+import { CustomContext } from "src/store/createStore";
 
 
 const Styles = styled.div`
@@ -30,11 +32,21 @@ const officeButtonArray = officeLocations.map(elem => {
     return {id: elem.id, text: elem.name};
 });
 
+const DriverMarkerGroup = () : JSX.Element => {
+    const {drivers} = useContext(CustomContext);
+    console.log("DriverMarkerGroup", drivers);
+    return (<>
+        {drivers.map((elem:Driver) => <DriverMarker position={[elem.location.latitude,elem.location.longitude]} key={elem.driver_id}/>)}
+    </>);
+};
+
 function IndexPage(): JSX.Element {
     const [numberOfTaxis, setNumberOfTaxis] = useState(defaultNumberOfTaxis);
-    const [drivers, setDrivers] = useState<Driver[]>([]);
     const [center, setCenter] = useState<Position>(defaultPosition);
-    const {position} = usePosition();
+    const {position} = usePosition();    
+    const { setDrivers } = useContext(CustomContext);
+    // const [state,dispatch] = useContext(Context);
+    // const { drivers, setDrivers } =  useContext(Context);
 
     const handleSliderChanges = (value:number) => {
         setNumberOfTaxis(value);
@@ -45,19 +57,20 @@ function IndexPage(): JSX.Element {
         if(office) setCenter(office?.position);
     };
 
-    const getDriversFromBFF = async (numberOfTaxis: number, position: Position) => {
-        const drivers = await getDrivers(position,numberOfTaxis); 
-        setDrivers(drivers);
-    };
+    // const getDriversFromBFF = async (numberOfTaxis: number, position: Position) => {
+    //     const drivers = await getDrivers(position,numberOfTaxis); 
+    //     setDrivers(drivers);
+    // };
 
     useEffect(() => {
-        getDriversFromBFF(numberOfTaxis, center);
+        // getDriversFromBFF(numberOfTaxis, center);
+        // fetchDrivers(dispatch,center,numberOfTaxis);
     }, [numberOfTaxis, center]);
 
 
     useEffect(() => {
         const interval = setInterval(() => {
-            getDriversFromBFF(numberOfTaxis, center);
+            fetchDrivers(setDrivers,center,numberOfTaxis);
         }, 1000);
         return () => clearInterval(interval);
     }, [numberOfTaxis, center]);
@@ -67,11 +80,6 @@ function IndexPage(): JSX.Element {
         setCenter(office.position);
     }, [position]);
 
-    const renderDriverMarkers = (drivers: Driver[]): JSX.Element => {
-        return (<>
-            {drivers.map((elem) => <DriverMarker position={[elem.location.latitude,elem.location.longitude]} key={elem.driver_id}/>)}
-        </>);
-    };
 
     const renderOfficeLocations = (offices: OfficeLocation[]): JSX.Element => {
         return (<> 
@@ -89,7 +97,7 @@ function IndexPage(): JSX.Element {
         <Styles>
             <Header/>
             <Map center={center}>
-                {renderDriverMarkers(drivers)}
+                <DriverMarkerGroup></DriverMarkerGroup>
                 {renderOfficeLocations(officeLocations)}
             </Map>
             <div className="App">

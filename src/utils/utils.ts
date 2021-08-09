@@ -56,12 +56,9 @@ const getClosestOffice = (position:Position) : OfficeLocation =>  {
     let closestOffice:OfficeLocation = officeLocations[0];
     officeLocations.forEach((element: OfficeLocation) => {
         const distanceToPos = distance(position.latitude, position.longitude, element.position.latitude, element.position.longitude);
-        console.log(distanceToPos, element.id);
         if(distanceToPos < minDist) {
             closestOffice = element;
             minDist = distanceToPos;
-            console.log(closestOffice);
-            console.log(position);
         }
     });
     return closestOffice;
