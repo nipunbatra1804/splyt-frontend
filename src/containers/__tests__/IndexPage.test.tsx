@@ -1,7 +1,7 @@
 
 import React from "react";
 import * as StoreContext from "src/store/store";
-import { State } from "src/store/reducer";
+import { State } from "src/store/types";
 import IndexPage from "src/containers/IndexPage";
 import { render, screen } from "@testing-library/react";
 

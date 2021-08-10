@@ -1,5 +1,5 @@
 
-import React, { useEffect, useContext } from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 
 import Map from "src/components/Map";
@@ -13,7 +13,7 @@ import OfficeMarkerLocations from "src/components/OfficeMarkerLocations";
 import { getClosestOrDefaultOffice } from "src/utils/utils";
 import { officeLocations, defaultNumberOfTaxis, officeButtonArray } from "src/constants/constants";
 import { fetchDrivers, updateMapCenter, updateNumberOfTaxis } from "src/store/reducer";
-import { CustomContext } from "src/store/store";
+import { useStoreContext } from "src/store/store";
 import { useInterval } from "src/hooks/useInterval";
 import { usePosition } from "src/hooks/usePosition";
 
@@ -31,7 +31,7 @@ const Styles = styled.div`
 
 function IndexPage(): JSX.Element {
     const {position} = usePosition();    
-    const { state , dispatch } = useContext(CustomContext);
+    const { state , dispatch } = useStoreContext();
     const { mapCentre, noOfTaxis, error } = state;
 
     useInterval(() => {

@@ -24,9 +24,6 @@ const ButtonWrapper = styled.div`
     justify-content: center;
 `;
 
-
-
-
 export type ButtonGroupProps = {
     values: {id:string, text:string}[],
     handleClick: (id:string) => void

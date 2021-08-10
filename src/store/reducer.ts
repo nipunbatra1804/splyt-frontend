@@ -1,4 +1,4 @@
-import React, {useContext} from "react";
+import React from "react";
 import { getDrivers } from "src/api/api";
 import { Driver, Position } from "src/types/types";
 import { Action, State } from "src/store/types";

@@ -1,4 +1,4 @@
-import React, {useContext} from "react";
+import React from "react";
 import { useStoreContext } from "src/store/store";
 import { Driver } from "src/types/types";
 import  DriverMarker from "src/components/DriverMarker";

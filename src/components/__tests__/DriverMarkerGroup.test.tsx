@@ -2,10 +2,10 @@ import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import DriverMarkerGroup from "src/components/DriverMarkerGroup";
 import * as StoreContext from "src/store/store";
-import { State } from "src/store/reducer";
+import { State } from "src/store/types";
 import { Driver, Position } from "src/types/types";
 
-const mockUserContext = (inputState: State) => {
+const mockStoreContext = (inputState: State) => {
     jest.spyOn(StoreContext, "useStoreContext").mockImplementation(() => ({
         state: inputState,
         dispatch: jest.fn()
@@ -42,7 +42,7 @@ describe("DriverMarkerGroup", () => {
     const mockInitialState: State = { drivers:mockDrivers, mapCentre: mockCenter, noOfTaxis: mockInputNoTaxis, error: false };
 
     it("should render DriverMarkerGroup", () => {
-        mockUserContext(mockInitialState);
+        mockStoreContext(mockInitialState);
 
         render(<DriverMarkerGroup />);
 
