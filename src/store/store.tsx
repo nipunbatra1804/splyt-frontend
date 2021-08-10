@@ -20,4 +20,6 @@ const Provider: React.FC = (props: any) => {
     );
 };
 
-export { CustomContext, Provider }; 
+const useStoreContext = () => React.useContext(CustomContext);
+
+export { CustomContext, Provider, useStoreContext }; 
