@@ -29,7 +29,7 @@ function Map (props: MapProps):JSX.Element {
     const {latitude, longitude} = props.center;
 
     useEffect(() => {
-        map?.flyTo([latitude,longitude]);
+        map?.flyTo([latitude,longitude], 13);
     }, [latitude, longitude]);
 
     return (

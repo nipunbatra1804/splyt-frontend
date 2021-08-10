@@ -10,12 +10,12 @@ import ErrorBanner from "src/components/ErrorBanner";
 import DriverMarkerGroup from "src/components/DriverMarkerGroup";
 import OfficeMarkerLocations from "src/components/OfficeMarkerLocations";
 
-import { usePosition } from "src/hooks/usePosition";
 import { getClosestOrDefaultOffice } from "src/utils/utils";
 import { officeLocations, defaultNumberOfTaxis, officeButtonArray } from "src/constants/constants";
 import { fetchDrivers, updateMapCenter, updateNumberOfTaxis } from "src/store/reducer";
 import { CustomContext } from "src/store/store";
 import { useInterval } from "src/hooks/useInterval";
+import { usePosition } from "src/hooks/usePosition";
 
 
 const Styles = styled.div`
