@@ -1,5 +1,6 @@
-import React, { Dispatch, Reducer } from "react";
-import { reducer, State, Action, initialState } from "src/store/reducer";
+import React, { Dispatch } from "react";
+import { reducer, initialState } from "src/store/reducer";
+import { Action, State } from "src/store/types";
 
 
 // const initalContextValues: {state:State, setDrivers: (drivers:any[]) => void} = {

@@ -1,23 +1,11 @@
 import React, {useContext} from "react";
 import { getDrivers } from "src/api/api";
 import { Driver, Position } from "src/types/types";
+import { Action, State } from "src/store/types";
 import { getClosestOrDefaultOffice } from "src/utils/utils";
 import { defaultNumberOfTaxis } from "src/constants/constants";
 
 
-
-export type Action = 
-  | { type: "FETCH_DRIVERS_SUCCESS", payload: { drivers: Driver[] } }
-  | { type: "FETCH_DRIVERS_FAILURE" }
-  | { type: "UPDATE_MAP_CENTRE", payload: { mapCentre: Position } }
-  | { type: "UPDATE_NUMBER_TAXIS", payload: { noOfTaxis: number } };
-
-export type State = {
-    drivers: Driver[],
-    mapCentre: Position,
-    noOfTaxis: number,
-    error: boolean,
-}
 
 const defaultPosition = getClosestOrDefaultOffice(null).position;
 export const initialState: State = { drivers:[], mapCentre: defaultPosition, noOfTaxis: defaultNumberOfTaxis, error: false };
