@@ -62,8 +62,8 @@ function Slider(props:SliderProps): JSX.Element {
     };
 
     return (
-        <Styles color={props.color}>
-            <input type="range" min={0} max={100} value={value} step={10} className="slider" onChange={handleOnChange} />
+        <Styles color={props.color} >
+            <input type="range" min={0} max={100} value={value} step={10} className="slider" onChange={handleOnChange} data-testid="slider"/>
             <div className="value">{value}</div>
         </Styles>
     );

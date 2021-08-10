@@ -18,7 +18,7 @@ const taxiIcon = new Icon({
 function DriverMarker (props: DriverMarkerProps):JSX.Element {
 
     return (
-        <Marker position={props.position} icon={taxiIcon} >
+        <Marker position={props.position} icon={taxiIcon} data-testId="driver-marker">
         </Marker>
     );
     

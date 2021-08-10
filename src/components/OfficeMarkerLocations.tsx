@@ -7,7 +7,7 @@ import {Marker, Popup} from "react-leaflet";
 function OfficeMarkerLocations(): ReactElement {
     return (<> 
         {officeLocations.map((ofc) => (
-            <Marker key={ofc.id} position={[ofc.position.latitude, ofc.position.longitude]} >
+            <Marker key={ofc.id} position={[ofc.position.latitude, ofc.position.longitude]} data-testId="office-location" >
                 <Popup>
                     Splyt HQ - {ofc.name}
                 </Popup>

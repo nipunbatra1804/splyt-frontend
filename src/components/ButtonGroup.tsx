@@ -49,6 +49,7 @@ const ButtonGroup = (props: ButtonGroupProps ): JSX.Element => {
                     name={elem.text}
                     onClick={() => handleButtonClick(elem.id)}
                     className={elem.id === clickedId ? "active" : ""}
+                    data-testid="button-group-btn"
                 >
                     {elem.text}
                 </Button>
