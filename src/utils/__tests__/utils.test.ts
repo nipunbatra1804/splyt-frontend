@@ -1,6 +1,5 @@
 // import {officeLocations} from "src/constants/constants";
 import { getClosestOrDefaultOffice } from "src/utils/utils";
-import * as constants from "src/constants/constants";
 
 describe("utils", () => {
 

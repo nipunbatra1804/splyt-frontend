@@ -10,7 +10,7 @@ describe("usePosition", () => {
         };
         const mockGeolocation = {
             getCurrentPosition: jest.fn(),
-            watchPosition: jest.fn().mockImplementation((success, error) => Promise.resolve(success({
+            watchPosition: jest.fn().mockImplementation((success, _) => Promise.resolve(success({
                 coords: mockPosition,
             }))),
         };

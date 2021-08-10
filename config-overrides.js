@@ -1,13 +1,13 @@
 const {
     override,
     addExternalBabelPlugins,
-  } = require("customize-cra");
+} = require("customize-cra");
   
-  module.exports = {
+module.exports = {
     webpack: override(
-      ...addExternalBabelPlugins(
-        "@babel/plugin-proposal-nullish-coalescing-operator"
-      ),
+        ...addExternalBabelPlugins(
+            "@babel/plugin-proposal-nullish-coalescing-operator"
+        ),
     ),
-  };
+};
   

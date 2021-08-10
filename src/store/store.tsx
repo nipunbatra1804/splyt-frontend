@@ -11,7 +11,7 @@ const initalContextValues: {state:State, dispatch: Dispatch<Action> } = {
 };
 const CustomContext = React.createContext(initalContextValues);
 
-const Provider: React.FC = (props: any) => {
+const Provider = (props: {children: JSX.Element}):JSX.Element => {
     const [state,dispatch] = React.useReducer(reducer, initialState);
 
     return (
