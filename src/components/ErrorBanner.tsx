@@ -11,7 +11,7 @@ const ErrorBannerWrapper = styled.div`
 
 function ErrorBanner(): ReactElement {
     return (
-        <ErrorBannerWrapper>
+        <ErrorBannerWrapper data-testid="error-banner">
             Something Went Wrong When Trying to Fetch Taxis in the Area
         </ErrorBannerWrapper>
     );
