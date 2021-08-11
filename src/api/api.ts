@@ -2,7 +2,7 @@ import axios from "axios";
 import { Driver, Position } from "src/types/types";
 
 const bffApi = axios.create({
-    baseURL: "http://localhost:8080"
+    baseURL: process.env.REACT_APP_BFF_API_URL
 });
 
 
