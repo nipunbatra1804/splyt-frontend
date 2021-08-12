@@ -1,9 +1,10 @@
 
-Remeber to add in the bff api and add it to the `.env` file as shown below:
+Remebber to add in the bff api and add it to the `.env` file as shown below:
 ```
 REACT_APP_BFF_API_URL="http://localhost:8080"
 ```
-
+You will also need to clone the bff (backend for frontend) from this repo and run it before you run the react app. 
+`https://github.com/nipunbatra1804/st-simple-bff`
 
 ## Available Scripts
 
